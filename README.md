@@ -1,8 +1,6 @@
 # js-for-web-201903
 Repository for the course "JavaScript for Web" of March 2019.
 
-JavaScript for Web
-
 ## Session 1
 
 How does the internet work?  
@@ -21,7 +19,7 @@ https://http.cat/
 JSON  
 https://json.org/   
 You can try in console:  
-```json
+```
 {
 key: 'value'
 }
