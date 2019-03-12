@@ -90,7 +90,6 @@ HTTP Server:
 - node.js starts a server
 - the server creates an HTTP connection
 - the browser is a client
-- every side has its own javascript engine
 
 Fetch API  
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 
