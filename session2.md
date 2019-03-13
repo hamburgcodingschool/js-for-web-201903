@@ -40,3 +40,7 @@ https://developers.google.com/maps/documentation/javascript/tutorial
 
 > Latitude : max/min +90 to -90  
 > Longitude : max/min +180 to -180
+
+### Example
+
+* [simple map](examples/simple-geolocation-map.js) with geolocation from browser 
