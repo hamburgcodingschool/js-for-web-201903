@@ -86,5 +86,48 @@ const destinations = [
 
 Fetch destinations in `main.js`:
 ```
-fetch('./destinations.js');
+fetch('./destinations.js')
+    .then(console.log);
 ```
+
+Transform into JSON object:
+- delete `const destinations =`
+- save as `destinations.json`
+- put everything into double quotes
+```
+[
+  {
+    "id": "hamburg",
+    "name": "Hamburg",
+    "position": {
+      lat: 0,
+      lng: 0
+    },
+    "description": "My home town :-)",
+    "continent": "europe"
+  },
+  //...
+]
+```
+
+Use prettier feature of JS Code:
+> `Command` + `Shift` + `P`  
+> then search for "Format Document"
+
+Put markers at destinations on your map
+```
+fetch('./destinations.json')
+    .then(res => res.json())
+    .then(destinations => {
+      destinations.forEach(destination => {
+        new google.maps.Marker({
+          map,
+          position: {
+            lat: destination.position.lat,
+            lng: destination.position.lng
+          }
+        })
+      });
+    });
+```
+- this needs to be in `initMap()`
