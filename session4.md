@@ -7,6 +7,8 @@ map
 ```
 myArray.map(element => {
   // do something with the element
+  
+  return newElement
 })
 
 // returns: new array with manipulated elements
