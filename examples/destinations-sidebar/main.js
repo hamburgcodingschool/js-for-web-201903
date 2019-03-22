@@ -22,11 +22,7 @@ const addDestinationsToMap = destinations => {
   });
 };
 
-const clickEventHandler = () => {
-
-
-}
-
+const clickEventHandler = () => {};
 
 const parseResponseJSON = response => response.json();
 
@@ -43,6 +39,8 @@ const createListItem = destination => {
   const titleElement = document.createElement('div');
   const positionElement = document.createElement('div');
 
+  itemContainerElement.className = 'destination-list-item';
+  titleElement.className = 'destination-list-item-title';
   titleElement.textContent = destination.name;
   positionElement.textContent = `${destination.position.lat}, ${
     destination.position.lng

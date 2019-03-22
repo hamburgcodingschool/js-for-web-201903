@@ -11,6 +11,7 @@
         margin: 0;
         padding: 0;
         height: 100%;
+        font-family: 'Lato', sans-serif;
       }
 
       aside {
@@ -31,7 +32,28 @@
         left: 15em;
         top: 0;
       }
+      .destinations-list {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+      }
+      .destination-list-item {
+        margin: 5px 0 10px;
+        padding: 3px;
+        background: #fff8f6;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .destination-list-item-title {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        padding: 3px 0;
+      }
     </style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp6IzZAuxAhtfazcY5OJ8NO8EoqNw4xsw&callback=initMap&libraries=geometry"
       async
