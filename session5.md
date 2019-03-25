@@ -1,6 +1,6 @@
 ## Session 5
 
-```
+```javascript
 let map;
 const destinationsList = document.querySelector('.destinations-list');
 
