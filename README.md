@@ -8,3 +8,7 @@ Repository for the course "JavaScript for Web" of March 2019.
 [Session 3](session3.md)
 
 [Session 4](session4.md)
+
+[Session 5](session5.md)
+
+[Session 6](session6.md)
