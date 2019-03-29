@@ -1,4 +1,5 @@
 let map;
+let infowindow;
 const destinationsList = document.querySelector('.destinations-list');
 
 function initMap() {
@@ -6,6 +7,7 @@ function initMap() {
     center: {lat: 07, lng: 0},
     zoom: 2
   });
+  infowindow = new google.maps.InfoWindow();
 
   fetch('./destinations.json')
     .then(parseResponseJSON)
@@ -14,15 +16,25 @@ function initMap() {
 
 const addDestinationsToMap = destinations => {
   destinations.forEach(destination => {
-    createMarker(destination);
-    const listItem = createListItem(destination);
-    listItem.addEventListener('click', clickEventHandler);
+    const marker = createMarker(destination);
 
+    marker.addListener('click', () => {
+      infowindow.setContent(destination.name);
+      infowindow.open(map, marker);
+    });
+
+    const listItem = createListItem(destination);
+    listItem.addEventListener('click', () =>
+      centerMapToDestination(destination)
+    );
     destinationsList.appendChild(listItem);
   });
 };
 
-const clickEventHandler = () => {};
+const centerMapToDestination = destination => {
+  map.setCenter(destination.position);
+  map.setZoom(destination.zoom || 8);
+};
 
 const parseResponseJSON = response => response.json();
 

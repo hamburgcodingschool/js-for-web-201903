@@ -87,7 +87,8 @@
       "lng": -77.781166
     },
     "description": "",
-    "continent": "north-america"
+    "continent": "north-america",
+    "zoom": 6
   },
   {
     "id": "Tokyo",
