@@ -1,8 +1,4 @@
-firebase.initializeApp({
-  apiKey: 'AIzaSyDubWQKcpsZfDH0Yhau23kUQMwRskGApcA',
-  authDomain: 'js-for-web-teacher.firebaseapp.com',
-  projectId: 'js-for-web-teacher'
-});
+firebase.initializeApp(config.firebase);
 
 const postNewDestination = ({
   name,
