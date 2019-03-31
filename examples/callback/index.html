@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>My Travel Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="modal"></div>
+    <aside>
+      <header>
+        <h1>My Travel blog</h1>
+      </header>
+      <ul class="destinations-list"></ul>
+    </aside>
+    <div class="map"></div>
+    <div class="login-overlay">
+      <button class="login-button">Login</button>
+    </div>
+    <div class="add-destination-container">
+      <button class="add-destination-button">Add new destination</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+
+    <script src="scripts/lib/html-utilities.js"></script>
+
+    <script src="scripts/main.js"></script>
+
+    <script src="scripts/lib/map.js"></script>
+    <script src="scripts/lib/db-ubtilities.js"></script>
+    <script src="scripts/lib/auth.js"></script>
+    <script src="scripts/lib/overlay.js"></script>
+    <script src="scripts/lib/list.js"></script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initApp&libraries=geometry"
+      async
+      defer
+    ></script>
+  </body>
+</html>
