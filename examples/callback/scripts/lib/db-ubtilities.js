@@ -1,8 +1,4 @@
-firebase.initializeApp({
-  apiKey: 'API_KEY',
-  authDomain: 'FIREBASE_PROJECT.firebaseapp.com',
-  projectId: 'FIREBASE_PROJECT'
-});
+firebase.initializeApp(app.config.firebase);
 
 const postNewDestination = ({
   name,
