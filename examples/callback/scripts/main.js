@@ -107,15 +107,13 @@ app.updateDestination = (data, id) => {
 
 
 app.deleteDestination = (id) => {
-    app.db.deleteDestination(id).then(() => {
-        const $listItem = app.listItems[id];
-        delete app.listItems[id]
-        $listItem.parentElement.removeChild($listItem)
-
-        app.db
-            .fetchDestinations()
-            .then(destinations => destinations.forEach(app.addDestinationToMap));
-    });
+    app.db.deleteDestination(id)
+        .then(app.list.clearListItems)
+        .then(() => {
+            app.db
+                .fetchDestinations()
+                .then(destinations => destinations.forEach(app.addDestinationToMap));
+        });
 };
 
 const listClickEventHandler = (marker, destination) => {
