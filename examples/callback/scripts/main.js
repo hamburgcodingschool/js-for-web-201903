@@ -73,7 +73,10 @@ app.removeAddDestination = () => {
 };
 
 app.addDestination = data => {
-    app.db.postNewDestination(data).then(app.addDestinationToMap);
+    app.db.postNewDestination(data).then((destination) => {
+        app.overlay.closeModal();
+        app.addDestinationToMap(destination)
+    });
 };
 
 app.addDestinationToMap = destination => {
@@ -98,17 +101,21 @@ app.updateDestination = (data, id) => {
         .then(app.map.clearMarkers)
         .then(app.list.clearListItems)
         .then(() => {
+            app.overlay.closeModal();
             app.db
                 .fetchDestinations()
-                .then(destinations => destinations.forEach(app.addDestinationToMap));
+                .then(destinations => destinations.forEach(app.addDestinationToMap))
+
         });
 };
 
 
-
 app.deleteDestination = (id) => {
     app.db.deleteDestination(id)
-        .then(app.list.clearListItems)
+        .then(() => {
+            app.list.clearListItems()
+            app.map.clearMarkers()
+        })
         .then(() => {
             app.db
                 .fetchDestinations()
