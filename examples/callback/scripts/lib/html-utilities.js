@@ -1,15 +1,15 @@
 const $ = (selector, parent = document) => {
-  return parent.querySelector(selector);
+    return parent.querySelector(selector);
 };
 
 const createElement = (elementType, options) => {
-  const element = document.createElement(elementType);
+    const element = document.createElement(elementType);
 
-  if (options) {
-    Object.keys(options).forEach(key => {
-      element[key] = options[key];
-    });
-  }
+    if (options) {
+        Object.keys(options).forEach(key => {
+            element[key] = options[key];
+        });
+    }
 
-  return element;
+    return element;
 };

@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>My Travel Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+</head>
+
+<body>
     <div class="modal"></div>
+    <header>
+        <h1 class="main-title">Travel blog</h1>
+        <div class="logout-container">
+            <h2 class="logout-button">Logout</h2>
+        </div>
+    </header>
     <aside>
-      <header>
-        <h1>My Travel blog</h1>
-      </header>
-      <ul class="destinations-list"></ul>
+        <ul class="destinations-list"></ul>
+
+        <div class="add-destination-container">
+            <button class="add-destination-button">+</button>
+        </div>
     </aside>
     <div class="map"></div>
     <div class="login-overlay">
-      <button class="login-button">Login</button>
-    </div>
-    <div class="add-destination-container">
-      <button class="add-destination-button">Add new destination</button>
+        <button class="login-button">Login</button>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 
@@ -32,17 +36,13 @@
 
     <script src="scripts/main.js"></script>
 
-    <script src="scripts/config/config.js"></script>
     <script src="scripts/lib/map.js"></script>
     <script src="scripts/lib/db-ubtilities.js"></script>
     <script src="scripts/lib/auth.js"></script>
     <script src="scripts/lib/overlay.js"></script>
     <script src="scripts/lib/list.js"></script>
 
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initApp&libraries=geometry"
-      async
-      defer
-    ></script>
-  </body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp6IzZAuxAhtfazcY5OJ8NO8EoqNw4xsw&callback=initApp&libraries=geometry" async defer></script>
+</body>
+
 </html>

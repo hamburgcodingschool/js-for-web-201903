@@ -1,19 +1,24 @@
-firebase.initializeApp(app.config.firebase);
+firebase.initializeApp({
+    apiKey: "AIzaSyDnCfXJ9E3NYatdS2FYqDyN7PJK2hJ17Zw",
+    authDomain: "js-for-web-kat.firebaseapp.com",
+    projectId: "js-for-web-kat",
+});
 
 const postNewDestination = ({
-  name,
-  continent,
-  description,
-  latitude,
-  longitude
-}) =>
-  app.db.firebase
+        name,
+        continent,
+        description,
+        position,
+        userName
+    }) =>
+    app.db.firebase
     .collection('destinations')
     .add({
-      name,
-      continent,
-      description,
-      position: new firebase.firestore.GeoPoint(latitude, longitude)
+        name,
+        continent,
+        description,
+        userName,
+        position: new firebase.firestore.GeoPoint(position.latitude, position.longitude)
     })
     .then(docRef => docRef.get())
     .then(mapFirebaseToGoogle)
@@ -24,30 +29,56 @@ const postNewDestination = ({
  * @param {firebaseDoc} doc
  */
 const mapFirebaseToGoogle = doc => {
-  const {position, ...rest} = doc.data();
+    const { id } = doc;
+    const { position, ...rest } = doc.data();
 
-  return {
-    ...rest,
-    position: {
-      lat: position.latitude,
-      lng: position.longitude
-    }
-  };
+    return {
+        ...rest,
+        id,
+        position: {
+            lat: position.latitude,
+            lng: position.longitude
+        }
+    };
 };
 
 const fetchDestinations = () => {
-  return app.db.firebase
-    .collection('destinations')
-    .get()
-    .then(querySnapshot => {
-      return querySnapshot.docs.map(app.db.mapFirebaseToGoogle);
-    })
-    .catch(err => console.error(err));
+    return app.db.firebase
+        .collection('destinations')
+        .get()
+        .then(querySnapshot => {
+            return querySnapshot.docs.map(app.db.mapFirebaseToGoogle);
+        })
+        .catch(err => console.error(err));
 };
 
+const updateDestination = (data, id) => {
+    return app.db.firebase.collection('destinations').doc(id)
+        .update(data)
+        .then(function() {
+            console.log("Document successfully updated!");
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+};
+const deleteDestination = (id) => {
+    return app.db.firebase.collection('destinations').doc(id)
+        .delete()
+        .then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+};
+
+
 app.db = {
-  firebase: firebase.firestore(),
-  fetchDestinations,
-  mapFirebaseToGoogle,
-  postNewDestination
+    firebase: firebase.firestore(),
+    fetchDestinations,
+    mapFirebaseToGoogle,
+    postNewDestination,
+    updateDestination,
+    deleteDestination
 };
