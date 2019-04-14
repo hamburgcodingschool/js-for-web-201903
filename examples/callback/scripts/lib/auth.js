@@ -9,6 +9,7 @@ const login = () => {
             app.auth.token = result.credential.accessToken;
             // The signed-in user info.
             app.auth.user = result.user;
+            console.log('app.auth>>>', app.auth);
             return result;
         })
         .catch(function(error) {
@@ -32,8 +33,19 @@ const logout = () => {
             // An error happened.
         });
 };
+const getDisplayName = (uid) =>
+    firebase.auth().getUser(uid)
+    .then((user) => {
+        console.log('Successfully fetched user data:', user.toJSON());
+    })
+    .catch((error) => {
+        console.log('Error fetching user data:', error);
+    });
+
+
 
 app.auth = {
     login,
-    logout
+    logout,
+    getDisplayName
 };

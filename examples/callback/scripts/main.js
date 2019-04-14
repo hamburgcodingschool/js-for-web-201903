@@ -1,5 +1,6 @@
 const app = {
     userName: '',
+    users: [],
     listItems: {}
 };
 
@@ -27,8 +28,20 @@ app.initMap = function() {
     app.showAdminUi();
     app.db
         .fetchDestinations()
-        .then(destinations => destinations.forEach(app.addDestinationToMap));
-    // app.isInitiliazed = true;
+        .then(destinations => {
+            setUniqueUsers(destinations);
+            app.list.createUserFilter();
+            return destinations.forEach(app.addDestinationToMap)
+        });
+};
+
+const setUniqueUsers = (destinations) => {
+    app.users = destinations.reduce((uniqueNames, item) => {
+        if (!uniqueNames.includes(item.userName)) {
+            uniqueNames.push(item.userName);
+        };
+        return uniqueNames
+    }, []);
 };
 
 app.initListeners = () => {
@@ -105,7 +118,6 @@ app.updateDestination = (data, id) => {
             app.db
                 .fetchDestinations()
                 .then(destinations => destinations.forEach(app.addDestinationToMap))
-
         });
 };
 

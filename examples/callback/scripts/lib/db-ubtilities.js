@@ -63,6 +63,7 @@ const updateDestination = (data, id) => {
             console.error("Error updating document: ", error);
         });
 };
+
 const deleteDestination = (id) => {
     return app.db.firebase.collection('destinations').doc(id)
         .delete()
@@ -73,6 +74,17 @@ const deleteDestination = (id) => {
         });
 };
 
+const fetchDestinationsByUser = (userName) => {
+    return app.db.firebase
+        .collection('destinations')
+        .where('userName', '==', userName)
+        .get()
+        .then(querySnapshot => {
+            return querySnapshot.docs.map(app.db.mapFirebaseToGoogle);
+        })
+        .then(destinations => destinations.forEach(app.addDestinationToMap))
+        .catch(err => console.error(err));
+};
 
 app.db = {
     firebase: firebase.firestore(),
@@ -80,5 +92,6 @@ app.db = {
     mapFirebaseToGoogle,
     postNewDestination,
     updateDestination,
-    deleteDestination
+    deleteDestination,
+    fetchDestinationsByUser
 };

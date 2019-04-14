@@ -21,7 +21,7 @@ const createListItem = destination => {
     destination.position.lng
   }`;
     positionElement.className = 'position-list-item';
-    userNameElement.textContent = destination.userName; //userId
+    userNameElement.textContent = destination.userName;
     userNameElement.className = 'user-name';
 
     itemContainerElement.appendChild(iconContainer);
@@ -50,8 +50,27 @@ const clearListItems = () => {
     };
 };
 
+const createUserFilter = () => {
+    const userSelect = $('#user-select');
+    userSelect.addEventListener('change', (event) => {
+        const userFilter = event.target.value;
+        app.map.clearMarkers();
+        app.list.clearListItems();
+        app.db.fetchDestinationsByUser(userFilter)
+    });
+    app.users.forEach((user) => {
+        const userItem = createElement('option');
+
+        userItem.value = user;
+        userItem.textContent = user;
+
+        userSelect.appendChild(userItem);
+    });
+};
+
 app.list = {
     $destinationsList: $('.destinations-list'),
     createListItem,
-    clearListItems
+    clearListItems,
+    createUserFilter
 };
