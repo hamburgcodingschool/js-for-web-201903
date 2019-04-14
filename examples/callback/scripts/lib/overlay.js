@@ -48,15 +48,18 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
 
         const imageInput = $('#image-input');
         const imageFile = imageInput.files[0];
-        app.uploadImage(imageFile).then((downloadUrl) => {
-            console.log('downloadUrl>', downloadUrl);
+        const imageFiles = imageInput.files;
+        saveButton.textContent = 'Loading ...';
+        saveButton.disabled = true;
+        app.uploadImages(imageFiles).then((downloadUrls) => {
+            console.log('downloadUrls>', downloadUrls);
             const dataToSave = {
                 name,
                 continent,
                 description,
                 position,
                 userName: app.userName,
-                image: downloadUrl
+                images: downloadUrls
             };
             onSave(dataToSave, destination.id);
         });

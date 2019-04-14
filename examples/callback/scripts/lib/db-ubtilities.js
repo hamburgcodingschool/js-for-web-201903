@@ -11,7 +11,7 @@ const postNewDestination = ({
         description,
         position,
         userName,
-        image
+        images
     }) =>
     app.db.firebase
     .collection('destinations')
@@ -20,7 +20,7 @@ const postNewDestination = ({
         continent,
         description,
         userName,
-        image,
+        images,
         position: new firebase.firestore.GeoPoint(position.latitude, position.longitude)
     })
     .then(docRef => docRef.get())
@@ -45,13 +45,17 @@ const mapFirebaseToGoogle = doc => {
     };
 };
 
-const uploadImage = (file) => {
+const uploadImages = (files) => {
     const storageRef = firebase.storage().ref();
-    const imageRef = storageRef.child(`images/${file.name}`);
-    return imageRef.put(file).then(() => {
-        return imageRef.getDownloadURL();
-    });
-
+    const promises = [];
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const imageRef = storageRef.child(`images/${file.name}`);
+        promises.push(imageRef.put(file).then(() => {
+            return imageRef.getDownloadURL()
+        }));
+    }
+    return Promise.all(promises)
 };
 
 const fetchDestinations = () => {
@@ -106,5 +110,5 @@ app.db = {
     updateDestination,
     deleteDestination,
     fetchDestinationsByUser,
-    uploadImage
+    uploadImages
 };

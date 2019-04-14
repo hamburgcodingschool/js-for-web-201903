@@ -92,8 +92,8 @@ app.addDestination = data => {
     });
 };
 
-//uploadImage returns a promise
-app.uploadImage = (imageFile) => app.db.uploadImage(imageFile);
+//uploadImages returns a promise
+app.uploadImages = (imageFiles) => app.db.uploadImages(imageFiles);
 
 app.addDestinationToMap = destination => {
     const marker = app.map.createMarker(destination.position);
