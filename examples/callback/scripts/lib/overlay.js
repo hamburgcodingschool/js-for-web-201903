@@ -45,15 +45,21 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
         const latitude = parseFloat($("#latitude-input", modalBox).value);
         const longitude = parseFloat($("#longitude-input", modalBox).value);
         const position = { latitude, longitude };
-        const dataToSave = {
-            name,
-            continent,
-            description,
-            position,
-            userName: app.userName
-        };
 
-        onSave(dataToSave, destination.id);
+        const imageInput = $('#image-input');
+        const imageFile = imageInput.files[0];
+        app.uploadImage(imageFile).then((downloadUrl) => {
+            console.log('downloadUrl>', downloadUrl);
+            const dataToSave = {
+                name,
+                continent,
+                description,
+                position,
+                userName: app.userName,
+                image: downloadUrl
+            };
+            onSave(dataToSave, destination.id);
+        });
     });
     const buttonContainer = $(".button-container");
     buttonContainer.appendChild(saveButton);

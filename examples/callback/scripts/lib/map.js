@@ -4,14 +4,14 @@ const createInfoWindowContent = destination => {
     const infoWindowContainer = createElement('div');
     const name = createElement('p');
     const description = createElement('p');
-    // const image = createElement('img')
-    // image.src = destination.image
-    // image.className = 'infowindow-image'
+    const image = createElement('img')
+    image.src = destination.image
+    image.className = 'infowindow-image'
     name.textContent = destination.name;
     name.className = 'infowindow-text';
     description.textContent = destination.description;
     description.className = 'infowindow-description';
-    // infoWindowContainer.appendChild(image)
+    infoWindowContainer.appendChild(image);
     infoWindowContainer.appendChild(name);
     infoWindowContainer.appendChild(description);
 

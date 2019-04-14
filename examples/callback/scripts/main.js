@@ -77,7 +77,7 @@ app.logout = () => {
     app.auth.logout().then(() => {
         app.removeAddDestination()
     });
-}
+};
 
 app.logoutListener();
 
@@ -92,6 +92,9 @@ app.addDestination = data => {
     });
 };
 
+//uploadImage returns a promise
+app.uploadImage = (imageFile) => app.db.uploadImage(imageFile);
+
 app.addDestinationToMap = destination => {
     const marker = app.map.createMarker(destination.position);
     app.map.addMarkerEvents(marker, destination);
@@ -105,9 +108,6 @@ app.addDestinationToMap = destination => {
     app.list.$destinationsList.appendChild(listItem);
     app.listItems[destination.id] = listItem
 };
-const clearList = () => {
-
-}
 
 app.updateDestination = (data, id) => {
     app.db.updateDestination(data, id)

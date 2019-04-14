@@ -2,6 +2,7 @@ firebase.initializeApp({
     apiKey: "AIzaSyDnCfXJ9E3NYatdS2FYqDyN7PJK2hJ17Zw",
     authDomain: "js-for-web-kat.firebaseapp.com",
     projectId: "js-for-web-kat",
+    storageBucket: "js-for-web-kat.appspot.com",
 });
 
 const postNewDestination = ({
@@ -9,7 +10,8 @@ const postNewDestination = ({
         continent,
         description,
         position,
-        userName
+        userName,
+        image
     }) =>
     app.db.firebase
     .collection('destinations')
@@ -18,6 +20,7 @@ const postNewDestination = ({
         continent,
         description,
         userName,
+        image,
         position: new firebase.firestore.GeoPoint(position.latitude, position.longitude)
     })
     .then(docRef => docRef.get())
@@ -40,6 +43,15 @@ const mapFirebaseToGoogle = doc => {
             lng: position.longitude
         }
     };
+};
+
+const uploadImage = (file) => {
+    const storageRef = firebase.storage().ref();
+    const imageRef = storageRef.child(`images/${file.name}`);
+    return imageRef.put(file).then(() => {
+        return imageRef.getDownloadURL();
+    });
+
 };
 
 const fetchDestinations = () => {
@@ -93,5 +105,6 @@ app.db = {
     postNewDestination,
     updateDestination,
     deleteDestination,
-    fetchDestinationsByUser
+    fetchDestinationsByUser,
+    uploadImage
 };
