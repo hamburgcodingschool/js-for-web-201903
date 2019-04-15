@@ -51,6 +51,7 @@ header {
 .infowindow-image {
     height: 200px;
     border-radius: 5px;
+    margin: auto;
 }
 
 .infowindow-text {
@@ -309,8 +310,6 @@ button[disabled]:hover {
 
 .blogview-overlay {
     display: none;
-    /* align-items: center;
-    justify-content: center; */
     position: absolute;
     top: 0;
     right: 0;
@@ -318,9 +317,41 @@ button[disabled]:hover {
     left: 0;
     background: #fff;
     z-index: 4;
+    overflow: scroll;
+}
+
+.title-container {
+    margin: 10px;
+    text-align: center;
+}
+
+.blog-title {
+    font-family: 'Indie Flower', cursive;
+    font-size: 2em;
+}
+
+.image-container {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.blog-image-item {
+    width: 400px;
+    margin: 5px;
+    height: 400px;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.blog-content-container {
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+    margin-bottom: 50px
 }
 
 .close-blog-button {
     width: 20px;
-    position: relative;
+    margin: 10px;
 }

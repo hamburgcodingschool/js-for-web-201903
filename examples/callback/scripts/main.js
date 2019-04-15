@@ -52,6 +52,7 @@ app.login = () => {
     app.auth.login().then(() => {
         app.removeLogin();
         app.initMap();
+        app.showAdminUi();
     });
 };
 
