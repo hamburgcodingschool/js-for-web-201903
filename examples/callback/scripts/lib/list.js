@@ -32,7 +32,7 @@ const createListItem = destination => {
     itemContainerElement.appendChild(userNameElement);
 
     editIcon.addEventListener('click', () =>
-        app.overlay.openAddDestinationForm(app.updateDestination, {}, destination)
+        app.overlay.openAddDestinationForm(destination)
     );
 
     deleteIcon.addEventListener('click', () =>

@@ -1,23 +1,25 @@
 const closeModal = () => {
-    const AddDestinanationButton = $('.add-destination-button');
-    AddDestinanationButton.disabled = false;
+    const AddDestinationButton = $('.add-destination-button');
+    AddDestinationButton.disabled = false;
 
     app.overlay.$modal.style.display = "none";
     emptyForm();
 };
 
 const prefilledForm = destination => {
-    const { position, name, description, continent } = destination;
+    const { position, name, description, continent, id } = destination;
+    if (id) $(".id").value = id;
     if (name) $(".name").value = name;
     if (description) $(".description").value = description;
     if (continent) $(".continent").value = continent;
     if (position) {
         $(".latitude").value = position.lat;
         $(".longitude").value = position.lng;
-    }
+    };
 };
 
 const emptyForm = () => {
+    $(".id").value = "";
     $(".name").value = "";
     $(".description").value = "";
     $(".continent").value = "";
@@ -25,10 +27,10 @@ const emptyForm = () => {
     $(".longitude").value = "";
 };
 
-const openAddDestinationForm = (onSave, options, destination = {}) => {
+const openAddDestinationForm = (destination = {}) => {
     app.overlay.$modal.style.display = "flex";
-    const AddDestinanationButton = $('.add-destination-button');
-    AddDestinanationButton.disabled = true;
+    const AddDestinationButton = $('.add-destination-button');
+    AddDestinationButton.disabled = true;
     prefilledForm(destination);
 
     const closeButton = $('.close-button');
@@ -36,42 +38,52 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
 
     const saveButton = $('.save-button');
     saveButton.textContent = 'Save';
-
-    saveButton.addEventListener("click", () => {
-        const modalBox = $(".modal-content");
-        const name = $("#name-input", modalBox).value;
-        const continent = $("#continent-input", modalBox).value;
-        const description = $("#description-input", modalBox).value;
-        const latitude = parseFloat($("#latitude-input", modalBox).value);
-        const longitude = parseFloat($("#longitude-input", modalBox).value);
-        const position = { latitude, longitude };
-
-        const imageInput = $('#image-input');
-        // const imageFile = imageInput.files[0];
-        const imageFiles = imageInput.files;
-        saveButton.textContent = 'Loading ...';
-        saveButton.disabled = true;
-        app.uploadImages(imageFiles).then((downloadUrls) => {
-            console.log('downloadUrls>', downloadUrls);
-            const dataToSave = {
-                name,
-                continent,
-                description,
-                position,
-                userName: app.userName,
-                images: downloadUrls
-            };
-            onSave(dataToSave, destination.id);
-        });
-
-        const AddDestinanationButton = $('.add-destination-button');
-        AddDestinanationButton.disabled = false;
-    });
+    $('.save-button').addEventListener('click', app.overlay.onSaveButtonClick);
 };
+
+const onSaveButtonClick = () => {
+    const saveButton = $('.save-button');
+    const modalBox = $(".modal-content");
+    const id = $(".id").value;
+    const name = $("#name-input", modalBox).value;
+    const continent = $("#continent-input", modalBox).value;
+    const description = $("#description-input", modalBox).value;
+    const latitude = parseFloat($("#latitude-input", modalBox).value);
+    const longitude = parseFloat($("#longitude-input", modalBox).value);
+    const position = { latitude, longitude };
+
+    const imageInput = $('#image-input');
+    const imageFiles = imageInput.files;
+    saveButton.textContent = 'Loading ...';
+    saveButton.disabled = true;
+    app.uploadImages(imageFiles).then((downloadUrls) => {
+        console.log('downloadUrls>', downloadUrls);
+        const dataToSave = {
+            id,
+            name,
+            continent,
+            description,
+            position,
+            userName: app.userName,
+            images: downloadUrls
+        };
+        if (id) {
+            app.updateDestination(dataToSave)
+        } else {
+            app.addDestination(dataToSave)
+        };
+    });
+
+    const AddDestinationButton = $('.add-destination-button');
+    AddDestinationButton.disabled = false;
+    saveButton.disabled = false;
+};
+
 
 app.overlay = {
     $modal: $(".modal"),
     openAddDestinationForm,
     closeModal,
-    prefilledForm
+    prefilledForm,
+    onSaveButtonClick
 };

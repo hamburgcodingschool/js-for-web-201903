@@ -67,7 +67,7 @@ app.showAdminUi = () => {
     $destinationButton.style.display = 'block';
 
     $destinationButton.addEventListener('click', () =>
-        app.overlay.openAddDestinationForm(app.addDestination)
+        app.overlay.openAddDestinationForm()
     );
 };
 
