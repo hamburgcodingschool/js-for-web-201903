@@ -23,8 +23,6 @@ const emptyForm = () => {
     $(".continent").value = "";
     $(".latitude").value = "";
     $(".longitude").value = "";
-    $(".post-button").remove();
-    $(".close-button").remove();
 };
 
 const openAddDestinationForm = (onSave, options, destination = {}) => {
@@ -33,14 +31,11 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
     AddDestinanationButton.disabled = true;
     prefilledForm(destination);
 
-    const closeButton = createElement("button");
-    closeButton.textContent = "Close";
-    closeButton.className = "close-button";
+    const closeButton = $('.close-button');
     closeButton.addEventListener("click", app.overlay.closeModal);
 
-    const saveButton = createElement("button");
-    saveButton.textContent = "Save";
-    saveButton.className = "post-button";
+    const saveButton = $('.save-button');
+    saveButton.textContent = 'Save';
 
     saveButton.addEventListener("click", () => {
         const modalBox = $(".modal-content");
@@ -72,11 +67,6 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
         const AddDestinanationButton = $('.add-destination-button');
         AddDestinanationButton.disabled = false;
     });
-
-    const buttonContainer = $(".button-container");
-    buttonContainer.appendChild(saveButton);
-    buttonContainer.appendChild(closeButton);
-
 };
 
 app.overlay = {
