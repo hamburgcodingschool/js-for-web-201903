@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>My Travel Blog</title>
+    <title>Travel Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -14,16 +14,23 @@
 <body>
     <div class="modal">
         <div class="modal-content">
-            <span>Enter name:</span>
+            <label for="name-input">Destination name:</label>
             <input id="name-input" class="name" />
-            <span>Enter continent:</span>
+            <label for="continent-input">Continent:</label>
             <input id="continent-input" class="continent" />
-            <span>Enter description:</span>
-            <input id="description-input" class="description" />
-            <span>Enter latitude:</span>
-            <input id="latitude-input" class="latitude" />
-            <span>Enter longitude:</span>
-            <input id="longitude-input" class="longitude" />
+            <div class="position-container">
+                <div class="latitude-container">
+                    <label for="latitude-input">Latitude:</label>
+                    <input id="latitude-input" class="latitude" placeholder="click on map" />
+                </div>
+                <div class="longitude-container">
+                    <label for="longitude-input">Longitude:</label>
+                    <input id="longitude-input" class="longitude" placeholder="click on map" />
+                </div>
+            </div>
+            <label for="description-input">Write your story:</label>
+            <textarea id="description-input" class="description"></textarea>
+            <label for="image-input">Upload your photos:</label>
             <input type="file" id="image-input" multiple>
             <div class="button-container"></div>
         </div>
@@ -51,8 +58,11 @@
         <button class="login-button">Login</button>
     </div>
     <div class="blogview-overlay">
+        <h2 class="blog-tite"></h2>
         <img src="https://firebasestorage.googleapis.com/v0/b/js-for-web-kat.appspot.com/o/deleteIcon.svg?alt=media&token=f9304905-b43d-46df-b745-0702cfb5986b" class="close-blog-button">
-        <h1>hello!</h1>
+        <div class="image-container"></div>
+        <div class="description-container">
+        </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 

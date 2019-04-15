@@ -32,6 +32,7 @@ const logout = () => {
             // An error happened.
         });
 };
+
 const getDisplayName = (uid) =>
     firebase.auth().getUser(uid)
     .then((user) => {
@@ -40,8 +41,6 @@ const getDisplayName = (uid) =>
     .catch((error) => {
         console.log('Error fetching user data:', error);
     });
-
-
 
 app.auth = {
     login,

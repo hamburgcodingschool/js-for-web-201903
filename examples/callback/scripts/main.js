@@ -46,7 +46,6 @@ const setUniqueUsers = (destinations) => {
 app.initListeners = () => {
     $('.login-button').addEventListener('click', app.login);
     $('.close-blog-button').addEventListener('click', app.blogView.close);
-    console.log('here', app.blogView.close);
 };
 
 app.login = () => {
@@ -74,17 +73,22 @@ app.logoutListener = () => {
     $('.logout-button').addEventListener('click', app.logout);
 };
 
+app.removeAdminUi = () => {
+    $('.add-destination-button').style.display = 'none';
+    $('.delete-icon').style.display = 'none';
+    $('.edit-icon').style.display = 'none';
+    $('.login-overlay').style.display = 'flex';
+    $('.login-button').style.display = 'flex';
+};
+
 app.logout = () => {
     app.auth.logout().then(() => {
-        app.removeAddDestination()
+        app.removeAdminUi()
     });
 };
 
 app.logoutListener();
 
-app.removeAddDestination = () => {
-    $('.add-destination-button').style.display = 'none';
-};
 
 app.addDestination = data => {
     app.db.postNewDestination(data).then((destination) => {

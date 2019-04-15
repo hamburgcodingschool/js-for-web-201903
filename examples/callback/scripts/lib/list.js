@@ -44,7 +44,6 @@ const createListItem = destination => {
 
 const clearListItems = () => {
     const destinationsList = $('.destinations-list');
-    console.log('destinationsList>>>', destinationsList);
     while (destinationsList.hasChildNodes()) {
         destinationsList.removeChild(destinationsList.firstChild);
     };

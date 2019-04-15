@@ -47,7 +47,7 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
         const position = { latitude, longitude };
 
         const imageInput = $('#image-input');
-        const imageFile = imageInput.files[0];
+        // const imageFile = imageInput.files[0];
         const imageFiles = imageInput.files;
         saveButton.textContent = 'Loading ...';
         saveButton.disabled = true;
@@ -64,9 +64,12 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
             onSave(dataToSave, destination.id);
         });
     });
+
     const buttonContainer = $(".button-container");
     buttonContainer.appendChild(saveButton);
     buttonContainer.appendChild(closeButton);
+
+
 };
 
 app.overlay = {

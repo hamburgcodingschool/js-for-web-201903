@@ -55,13 +55,24 @@ header {
 
 .infowindow-text {
     font-family: 'Lato', sans-serif;
-    text-align: center;
     font-weight: 800;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    margin: 5px 0;
 }
 
-.infowindow-description {
-    font-size: 0.9em;
+.infowindow-continent {
+    font-size: 1em;
+    margin-top: 0;
+}
+
+.read-more-link {
+    font-family: 'Lato', sans-serif;
+    color: #2e7099;
+    text-decoration: none;
+}
+
+.read-more-link:hover {
+    color: #333;
 }
 
 
@@ -73,28 +84,52 @@ aside {
     top: 3.3em;
     bottom: 0;
     padding: 20px;
+    padding-top: 0;
     width: 15em;
     box-sizing: border-box;
     overflow: scroll;
 }
 
 .user-select-container {
-    margin: 5px 5px 10px;
-    padding: 3px;
+    display: block;
+    width: 13em;
+    margin-bottom: 20px;
+    position: fixed;
+    background-color: #fff;
+}
+
+.user-select-container>label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.user-select-container>select {
+    width: 95%;
+    height: 30px;
+    margin: 5px 0;
+    margin-bottom: 20px;
+    border: 1px solid #e6e6e6;
+    background-color: #fafafa;
 }
 
 .destinations-list {
-    margin: 0;
     list-style: none;
     padding: 0;
 }
 
 .destination-list-item {
-    margin: 5px 5px 10px;
     padding: 3px;
+    margin: 10px 0;
+    width: 95%;
     background-color: #f5faff;
     border-radius: 5px;
+    border: 1px solid #efefef;
     cursor: pointer;
+}
+
+.destination-list-item:first-child {
+    margin-top: 95px;
 }
 
 .destination-list-item-title {
@@ -116,6 +151,7 @@ aside {
 .icon-container {
     border-bottom: 4px dotted #ccc;
     padding: 2px 0 4px 0;
+    height: 25px;
 }
 
 .delete-icon {
@@ -144,7 +180,7 @@ aside {
 .add-destination-button {
     display: none;
     border-radius: 25px;
-    padding: 5px 10px;
+    padding: 9px 15px;
 }
 
 
@@ -164,28 +200,54 @@ aside {
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-radius: 0.1em;
+    border-radius: 0.4em;
     overflow: auto;
     position: fixed;
-    top: 110px;
+    top: 115px;
     left: 250px;
     z-index: 1;
-}
-
-.modal-content>input,
-span {
-    margin: 5px auto;
-    width: 60%;
 }
 
 .modal-content>input {
     height: 25px;
     padding: 0.2em;
     border: 1px solid #ccc;
+    background-color: #f5fafe;
 }
 
+.modal-content>input,
+.modal-content>label,
+textarea,
+.position-container {
+    margin: 5px auto;
+    width: 70%;
+}
 
-/* .description-input {} */
+.user-select {
+    height: 50px;
+    background-color: #f5fafe
+}
+
+.position-container {
+    display: flex;
+}
+
+.latitude-container {
+    margin-right: 15px;
+}
+
+.description {
+    height: 100px;
+    background-color: #f5fafe;
+    border: 1px solid #ccc;
+}
+
+.latitude,
+.longitude,
+#image-input {
+    border: none;
+    background-color: #fff;
+}
 
 
 /* buttons */
@@ -223,7 +285,7 @@ button[disabled]:hover {
 
 .button-container {
     display: flex;
-    margin: 10px 35px;
+    margin: 10px;
 }
 
 
@@ -239,7 +301,7 @@ button[disabled]:hover {
     bottom: 0;
     left: 0;
     background: #fff;
-    z-index: 10000;
+    z-index: 3;
 }
 
 
@@ -247,15 +309,15 @@ button[disabled]:hover {
 
 .blogview-overlay {
     display: none;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background: #fff;
-    z-index: 10000;
+    z-index: 4;
 }
 
 .close-blog-button {
