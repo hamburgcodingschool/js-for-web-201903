@@ -8,6 +8,32 @@ body {
 }
 
 
+/* login overlay */
+
+.login-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 3;
+}
+
+.login-overlay {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/js-for-web-kat.appspot.com/o/austria.JPG?alt=media&token=42ee3427-9435-49f1-b807-2374446437bf);
+    background-size: cover;
+}
+
+.login-button {
+    padding: 10px 40px;
+    font-size: 1.1em;
+}
+
+
 /* header */
 
 header {
@@ -156,11 +182,13 @@ aside {
 }
 
 .delete-icon {
+    display: block;
     width: 10px;
     margin: 5px;
 }
 
 .edit-icon {
+    display: block;
     width: 10px;
     margin: 4px;
     margin-top: 6px;
@@ -287,22 +315,6 @@ button[disabled]:hover {
 .button-container {
     display: flex;
     margin: 10px;
-}
-
-
-/* login overlay */
-
-.login-overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: #fff;
-    z-index: 3;
 }
 
 

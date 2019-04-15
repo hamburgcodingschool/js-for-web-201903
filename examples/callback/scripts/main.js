@@ -62,6 +62,7 @@ app.removeLogin = () => {
 
 app.showAdminUi = () => {
     $('.login-button').style.display = 'none';
+
     const $destinationButton = $('.add-destination-button');
     $destinationButton.style.display = 'block';
 
@@ -76,8 +77,6 @@ app.logoutListener = () => {
 
 app.removeAdminUi = () => {
     $('.add-destination-button').style.display = 'none';
-    $('.delete-icon').style.display = 'none';
-    $('.edit-icon').style.display = 'none';
     $('.login-overlay').style.display = 'flex';
     $('.login-button').style.display = 'flex';
 };

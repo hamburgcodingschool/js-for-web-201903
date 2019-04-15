@@ -1,4 +1,7 @@
 const closeModal = () => {
+    const AddDestinanationButton = $('.add-destination-button');
+    AddDestinanationButton.disabled = false;
+
     app.overlay.$modal.style.display = "none";
     emptyForm();
 };
@@ -26,6 +29,8 @@ const emptyForm = () => {
 
 const openAddDestinationForm = (onSave, options, destination = {}) => {
     app.overlay.$modal.style.display = "flex";
+    const AddDestinanationButton = $('.add-destination-button');
+    AddDestinanationButton.disabled = true;
     prefilledForm(destination);
 
     const closeButton = createElement("button");
@@ -63,12 +68,14 @@ const openAddDestinationForm = (onSave, options, destination = {}) => {
             };
             onSave(dataToSave, destination.id);
         });
+
+        const AddDestinanationButton = $('.add-destination-button');
+        AddDestinanationButton.disabled = false;
     });
 
     const buttonContainer = $(".button-container");
     buttonContainer.appendChild(saveButton);
     buttonContainer.appendChild(closeButton);
-
 
 };
 
