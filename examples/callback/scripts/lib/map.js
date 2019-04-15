@@ -4,6 +4,7 @@ const createInfoWindowContent = destination => {
     const infoWindowContainer = createElement('div');
     const name = createElement('p');
     const description = createElement('p');
+    const readMoreLink = createElement('a');
     if (destination.images) {
         const image = createElement('img')
         image.className = 'infowindow-image'
@@ -14,8 +15,15 @@ const createInfoWindowContent = destination => {
     name.className = 'infowindow-text';
     description.textContent = destination.description;
     description.className = 'infowindow-description';
+    readMoreLink.className = 'read-more-link';
+    readMoreLink.textContent = 'read more >'
+    readMoreLink.href = '#';
+
     infoWindowContainer.appendChild(name);
     infoWindowContainer.appendChild(description);
+    infoWindowContainer.appendChild(readMoreLink);
+
+    readMoreLink.addEventListener('click', () => onClickReadMore(destination));
 
     return infoWindowContainer;
 };
@@ -72,6 +80,10 @@ const addMarkerEvents = (marker, destination) => {
         app.infoWindow.setContent(createInfoWindowContent(destination));
         app.infoWindow.open(app.map.mapInstance, marker);
     });
+};
+
+const onClickReadMore = (destination) => {
+    app.blogView.open(destination);
 };
 
 app.map = {

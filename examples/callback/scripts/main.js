@@ -8,13 +8,12 @@ function initApp() {
     app.mapLoaded = true;
 
     firebase.auth().onAuthStateChanged(function(user) {
+        app.initListeners();
         if (user) {
             app.userName = user.displayName;
             app.removeLogin();
             app.initMap();
-        } else {
-            app.initListeners();
-        }
+        };
     });
 }
 
@@ -46,6 +45,8 @@ const setUniqueUsers = (destinations) => {
 
 app.initListeners = () => {
     $('.login-button').addEventListener('click', app.login);
+    $('.close-blog-button').addEventListener('click', app.blogView.close);
+    console.log('here', app.blogView.close);
 };
 
 app.login = () => {
@@ -104,7 +105,6 @@ app.addDestinationToMap = destination => {
         listClickEventHandler(marker, destination)
     );
 
-
     app.list.$destinationsList.appendChild(listItem);
     app.listItems[destination.id] = listItem
 };
@@ -120,7 +120,6 @@ app.updateDestination = (data, id) => {
                 .then(destinations => destinations.forEach(app.addDestinationToMap))
         });
 };
-
 
 app.deleteDestination = (id) => {
     app.db.deleteDestination(id)
