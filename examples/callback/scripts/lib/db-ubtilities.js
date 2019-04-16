@@ -68,9 +68,9 @@ const fetchDestinations = () => {
         .catch(err => console.error(err));
 };
 
-const updateDestination = (data, id) => {
+const updateDestination = ({ name, continent, description, position }, id) => {
     return app.db.firebase.collection('destinations').doc(id)
-        .update(data)
+        .update({ name, continent, description, position })
         .then(function() {
             console.log("Document successfully updated!");
         })

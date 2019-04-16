@@ -68,7 +68,7 @@ const onSaveButtonClick = () => {
             images: downloadUrls
         };
         if (id) {
-            app.updateDestination(dataToSave)
+            app.updateDestination(dataToSave, id)
         } else {
             app.addDestination(dataToSave)
         };
