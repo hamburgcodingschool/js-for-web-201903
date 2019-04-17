@@ -1,22 +1,24 @@
-# js-for-web-201903
-Repository for the course "JavaScript for Web" of March 2019.
+## Session 1
 
-[Session 1](session1.md)
+How does the internet work?  
+https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work
 
-[Session 2](session2.md)
+Client and Server  
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview
 
-[Session 3](session3.md)
+HTTP handshake  
+https://serverfault.com/questions/570387/https-overhead-compared-to-http 
 
-[Session 4](session4.md)
-
-[Session 5](session5.md)
+Status codes  
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status   
+https://http.cat/
 
 JSON  
 https://json.org/   
 You can try in console:  
 ```
 {
-key: 'value'
+  key: 'value'
 }
 ```
 ```
@@ -85,8 +87,8 @@ HTTP Server:
 - node.js starts a server
 - the server creates an HTTP connection
 - the browser is a client
+- every side has its own javascript engine
 
 Fetch API  
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 
 
-[Session 7](session7.md)

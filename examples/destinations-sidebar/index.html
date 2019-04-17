@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Lato', sans-serif;
+      }
+
+      aside {
+        position: absolute;
+        z-index: 1000;
+        background: #fff;
+        top: 0;
+        bottom: 0;
+        padding: 20px;
+        width: 15em;
+        box-sizing: border-box;
+      }
+
+      .map {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 15em;
+        top: 0;
+      }
+      .destinations-list {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+      }
+      .destination-list-item {
+        margin: 5px 0 10px;
+        padding: 3px;
+        background: #fff8f6;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .destination-list-item-title {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        padding: 3px 0;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp6IzZAuxAhtfazcY5OJ8NO8EoqNw4xsw&callback=initMap&libraries=geometry"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <aside>
+      <header>
+        <h1>My Travel blog</h1>
+      </header>
+
+      <ul class="destinations-list"></ul>
+    </aside>
+    <div class="map"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
